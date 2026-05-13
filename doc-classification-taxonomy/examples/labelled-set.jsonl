@@ -1,0 +1,12 @@
+{"fileName": "front-bumper-damage.jpg", "mimeType": "image/jpeg", "expected": "evidence.photo.vehicle"}
+{"fileName": "intersection-overview.jpg", "mimeType": "image/jpeg", "expected": "evidence.photo.scene"}
+{"fileName": "dashcam-clip.mp4", "mimeType": "video/mp4", "expected": "evidence.video"}
+{"fileName": "officer-incident-report.pdf", "mimeType": "application/pdf", "expected": "official.police-report"}
+{"fileName": "vehicle-title-abstract.pdf", "mimeType": "application/pdf", "expected": "official.dmv-record"}
+{"fileName": "body-shop-estimate.pdf", "mimeType": "application/pdf", "expected": "financial.repair-estimate"}
+{"fileName": "tow-receipt.pdf", "mimeType": "application/pdf", "expected": "financial.receipt"}
+{"fileName": "enterprise-rental-agreement.pdf", "mimeType": "application/pdf", "expected": "financial.rental-agreement"}
+{"fileName": "ER-visit-bill.pdf", "mimeType": "application/pdf", "expected": "medical.bill"}
+{"fileName": "MRI-report.pdf", "mimeType": "application/pdf", "expected": "medical.record"}
+{"fileName": "claimant-narrative-form.pdf", "mimeType": "application/pdf", "expected": "correspondence.claimant-statement"}
+{"fileName": "policy-declarations.pdf", "mimeType": "application/pdf", "expected": "policy.declarations-page"}

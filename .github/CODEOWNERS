@@ -1,0 +1,15 @@
+# CODEOWNERS for UiPath/fde-implementations (FDE Artifact Library)
+#
+# Default reviewers — FDE leads. Replace placeholder team handle below
+# with the actual GitHub team once it exists. Joe Chiu owns the repo
+# overall; specialist teams per asset type can be added as the library grows.
+#
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-security/customizing-your-repository/about-code-owners
+
+* @UiPath/fde-leads
+
+# Asset-type specialists can be added below as the library grows. Examples:
+# /starters/        @UiPath/fde-leads
+# /components/      @UiPath/fde-leads
+# /knowledge/       @UiPath/fde-leads
+# /tools/           @UiPath/fde-leads

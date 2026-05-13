@@ -1,0 +1,40 @@
+{
+  "$schema": "https://uipath.com/schemas/codedapp/v1",
+  "app": {
+    "title": "Claims Intake — REPLACE_CARRIER_NAME",
+    "description": "First-notice-of-loss intake for accident claims.",
+    "targetQueue": "REPLACE_QUEUE_NAME",
+    "taxonomyRef": "../doc-classification-taxonomy/taxonomy.json",
+    "classification": {
+      "confidenceThreshold": 0.7,
+      "humanReviewBelow": 0.85
+    }
+  },
+  "sections": [
+    {
+      "id": "claimant",
+      "title": "Claimant details",
+      "fields": [
+        { "id": "claimantName", "type": "text", "label": "Claimant name", "required": true },
+        { "id": "claimantContact", "type": "text", "label": "Phone or email", "required": true },
+        { "id": "policyNumber", "type": "text", "label": "Policy number (if known)", "required": false }
+      ]
+    },
+    {
+      "id": "incident",
+      "title": "Incident details",
+      "fields": [
+        { "id": "incidentDate", "type": "date", "label": "Date of incident", "required": true },
+        { "id": "incidentLocation", "type": "text", "label": "Location", "required": true },
+        { "id": "narrative", "type": "longtext", "label": "What happened?", "required": true, "minLength": 40 }
+      ]
+    },
+    {
+      "id": "attachments",
+      "title": "Supporting documents",
+      "fields": [
+        { "id": "documents", "type": "fileArray", "label": "Upload supporting documents", "accept": ["application/pdf", "image/jpeg", "image/png"], "max": 20 }
+      ]
+    }
+  ]
+}

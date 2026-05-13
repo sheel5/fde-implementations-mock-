@@ -1,0 +1,40 @@
+{
+  "intakeId": "f0e8a4d2-3c5e-4f1a-9c2b-1a2b3c4d5e6f",
+  "submittedAt": "2026-05-06T14:32:11Z",
+  "claimant": {
+    "name": "Jane Sample",
+    "contact": "jane.sample@example.com",
+    "policyNumber": "POL-EXAMPLE-0001"
+  },
+  "incident": {
+    "date": "2026-05-04",
+    "location": "Intersection of Example St and Sample Ave, Anytown",
+    "narrative": "Rear-ended at a stop light. Both drivers exchanged information. No injuries reported on scene."
+  },
+  "attachments": [
+    {
+      "fileName": "scene-photo-1.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 1843201,
+      "storageRef": "bucket://example-fnol/intake/f0e8a4d2/scene-photo-1.jpg",
+      "classification": {
+        "taxonomyNode": "evidence.photo.vehicle",
+        "confidence": 0.94,
+        "humanReviewRequired": false,
+        "modelVersion": "claims-classifier-v1"
+      }
+    },
+    {
+      "fileName": "police-report.pdf",
+      "mimeType": "application/pdf",
+      "sizeBytes": 412005,
+      "storageRef": "bucket://example-fnol/intake/f0e8a4d2/police-report.pdf",
+      "classification": {
+        "taxonomyNode": "official.police-report",
+        "confidence": 0.91,
+        "humanReviewRequired": false,
+        "modelVersion": "claims-classifier-v1"
+      }
+    }
+  ]
+}

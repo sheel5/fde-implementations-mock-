@@ -1,0 +1,41 @@
+name: Build component index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*/component.md'
+      - '_meta/build_index.py'
+      - '.github/workflows/build-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install deps
+        run: pip install pyyaml
+
+      - name: Build _meta/index.json
+        run: python _meta/build_index.py
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain _meta/index.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add _meta/index.json
+            git commit -m "chore(_meta): regenerate index"
+            git push
+          else
+            echo "Index unchanged."
+          fi

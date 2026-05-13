@@ -1,0 +1,65 @@
+{
+  "$schema": "https://uipath.com/fde-implementations/doc-classification-taxonomy/taxonomy.schema.json",
+  "version": "0.1.0",
+  "root": {
+    "evidence": {
+      "description": "Materials capturing the incident itself.",
+      "children": {
+        "photo": {
+          "description": "Photographic evidence taken at or after the incident.",
+          "children": {
+            "vehicle": { "description": "Photos of involved vehicles, damage, license plates." },
+            "scene": { "description": "Photos of the location, road conditions, signage." },
+            "injury": { "description": "Photos of bodily injuries. Sensitive — flag for restricted handling." }
+          }
+        },
+        "video": { "description": "Video evidence — dashcam, surveillance, bystander recordings." },
+        "diagram": { "description": "Hand-drawn or generated incident diagrams." }
+      }
+    },
+    "official": {
+      "description": "Documents issued by an authority or institution.",
+      "children": {
+        "police-report": { "description": "Police, sheriff, or highway-patrol incident report." },
+        "dmv-record": { "description": "DMV or equivalent registration / title / abstract record." },
+        "court-document": { "description": "Filings, subpoenas, judgments related to the claim." }
+      }
+    },
+    "financial": {
+      "description": "Documents quantifying loss or cost.",
+      "children": {
+        "repair-estimate": { "description": "Body shop or contractor estimate for repairs." },
+        "invoice": { "description": "Paid or unpaid invoice for services rendered." },
+        "receipt": { "description": "Proof of out-of-pocket expense." },
+        "rental-agreement": { "description": "Replacement-vehicle rental contract." }
+      }
+    },
+    "medical": {
+      "description": "Health-related documents tied to the claim.",
+      "children": {
+        "bill": { "description": "Hospital, clinic, or provider bill." },
+        "record": { "description": "Treatment notes, diagnosis records, imaging reports." },
+        "prescription": { "description": "Pharmacy records or prescription documentation." }
+      }
+    },
+    "correspondence": {
+      "description": "Communications between parties tied to the claim.",
+      "children": {
+        "claimant-statement": { "description": "Written or transcribed statement from the claimant." },
+        "witness-statement": { "description": "Written or transcribed statement from a witness." },
+        "carrier-letter": { "description": "Letter from the insurance carrier (this or another)." },
+        "attorney-letter": { "description": "Correspondence from legal counsel." }
+      }
+    },
+    "policy": {
+      "description": "Insurance policy artifacts.",
+      "children": {
+        "declarations-page": { "description": "Policy declarations / coverage summary." },
+        "endorsement": { "description": "Policy amendments and endorsements." }
+      }
+    },
+    "unknown": {
+      "description": "Catch-all for documents that don't fit elsewhere. Triggers human review."
+    }
+  }
+}
