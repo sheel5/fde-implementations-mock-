@@ -1,0 +1,36 @@
+{
+  "MatchedServices": [
+    {
+      "benefitName": "Emergency Room Visit",
+      "serviceDate": "2026-02-15",
+      "category": "Accident Care",
+      "confidence": "95%",
+      "justification": "Extracted service 'Emergency Department Visit' matches benefit category 'Emergency Room Visit'. The claim narrative confirms an ER evaluation following an accident, and the benefit policy lists this as an eligible service.",
+      "justificationSource": [
+        { "pageNumber": "1", "fileName": "claim-document.pdf" },
+        { "pageNumber": "1", "fileName": "policy-benefits.pdf" }
+      ]
+    },
+    {
+      "benefitName": "Diagnostic Imaging",
+      "serviceDate": "2026-02-15",
+      "category": "Diagnostic",
+      "confidence": "88%",
+      "justification": "Extracted service 'X-ray of left knee' matches benefit category 'Diagnostic Imaging'. The claim text documents a physician-ordered X-ray after a fall; the policy covers diagnostic imaging for accident-related injuries.",
+      "justificationSource": [
+        { "pageNumber": "2", "fileName": "claim-document.pdf" }
+      ]
+    },
+    {
+      "benefitName": "Follow-Up Consultation",
+      "serviceDate": "2026-02-22",
+      "category": "Accident Care",
+      "confidence": "72%",
+      "justification": "Extracted service 'Follow-up office visit' maps to benefit category 'Follow-Up Consultation'. The claim narrative indicates a scheduled follow-up within the policy's coverage window for post-accident care.",
+      "justificationSource": [
+        { "pageNumber": "3", "fileName": "claim-document.pdf" },
+        { "pageNumber": "2", "fileName": "policy-benefits.pdf" }
+      ]
+    }
+  ]
+}

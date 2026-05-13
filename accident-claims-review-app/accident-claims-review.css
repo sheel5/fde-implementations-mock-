@@ -1,0 +1,471 @@
+/* ============================================================
+   Accident Claims Review — UiPath Apps custom HTML component
+
+   Theme tokens (--brand-primary, --brand-secondary, etc.) below
+   are intentionally generic. Defaults ship with UiPath orange
+   and a complementary navy; override in :root for an engagement.
+   ============================================================ */
+
+:root {
+    --brand-primary:        #FA4616;            /* UiPath orange (default) */
+    --brand-primary-dark:   #D63A11;
+    --brand-primary-pale:   rgba(250, 70, 22, 0.08);
+    --brand-secondary:      #2D2F5F;            /* Complementary navy */
+    --brand-secondary-light:#3D4080;
+    --bg-page:              #f0f2f5;
+    --bg-card:              #ffffff;
+    --border:               #dde1e7;
+    --text-primary:         #1a1a1a;
+    --text-secondary:       #5a5a5a;
+    --text-muted:           #8a8a8a;
+    --radius-card:          10px;
+    --radius-sm:            5px;
+    --shadow-card:          0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-hover:         0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.app-header {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+
+.app-title {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+}
+
+.app-subtitle {
+    color: rgba(255,255,255,0.88);
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+
+/* ============================================================
+   Main Layout
+   ============================================================ */
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 40px 48px;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+}
+
+.btn-add-service {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 20px;
+    background: var(--brand-secondary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-add-service:hover {
+    background: var(--brand-secondary-light);
+    box-shadow: 0 2px 8px rgba(45, 47, 95, 0.3);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    gap: 22px;
+}
+
+/* ============================================================
+   Service Card
+   ============================================================ */
+.service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.service-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* Card Header */
+.service-header {
+    border-bottom: 2px solid var(--brand-primary);
+    padding-bottom: 12px;
+    position: relative;
+}
+
+.btn-remove-service {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-remove-service:hover {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.08);
+    border-color: rgba(220, 53, 69, 0.25);
+}
+
+/* Editable fields for new/added cards */
+.edit-benefit-name,
+.edit-category {
+    width: calc(100% - 36px);
+    padding: 6px 10px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-benefit-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.edit-category {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.edit-benefit-name:focus,
+.edit-category:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px var(--brand-primary-pale);
+}
+
+.benefit-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--brand-secondary);
+    line-height: 1.3;
+}
+
+.service-category {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 500;
+}
+
+
+/* ============================================================
+   Field Rows
+   ============================================================ */
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.field-label {
+    flex: 0 0 140px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.field-value {
+    flex: 1;
+}
+
+/* ============================================================
+   Editable Date Input
+   ============================================================ */
+.date-input-wrapper {
+    flex: 1;
+    position: relative;
+    max-width: 220px;
+}
+
+.date-input {
+    width: 100%;
+    padding: 8px 36px 8px 12px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.date-input:hover  { border-color: var(--brand-secondary-light); }
+.date-input:focus  {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px var(--brand-primary-pale);
+}
+
+/* Flash green briefly after a successful save */
+.date-input.date-saved {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+}
+
+.date-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 15px;
+    opacity: 0.55;
+}
+
+/* ============================================================
+   Confidence Badge
+   ============================================================ */
+.confidence-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.confidence-high   { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.confidence-medium { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+.confidence-low    { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* ============================================================
+   Justification Section
+   ============================================================ */
+.justification-section {
+    background: var(--brand-primary-pale);
+    border-left: 3px solid var(--brand-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.justification-text {
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.55;
+}
+
+/* ============================================================
+   Collapsible Sources
+   ============================================================ */
+.sources-container {
+    border-top: 1px solid rgba(250, 70, 22, 0.2);
+    padding-top: 8px;
+}
+
+.sources-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-secondary);
+    transition: color 0.2s ease;
+}
+
+.sources-toggle:hover { color: var(--brand-primary); }
+
+.sources-chevron {
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+    display: inline-block;
+}
+
+.sources-toggle.open .sources-chevron {
+    transform: rotate(180deg);
+}
+
+.sources-list {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.source-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 7px 10px;
+}
+
+.source-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.source-filename {
+    flex: 1;
+    font-size: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.source-page {
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    border-left: 1px solid var(--border);
+    padding-left: 8px;
+    margin-left: 4px;
+}
+
+/* ============================================================
+   Draft Card
+   ============================================================ */
+.draft-card {
+    border: 2px dashed var(--brand-secondary);
+    background: rgba(45, 47, 95, 0.03);
+}
+
+.draft-justification-row {
+    align-items: flex-start;
+}
+
+.edit-justification {
+    flex: 1;
+    padding: 8px 10px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-justification:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px var(--brand-primary-pale);
+}
+
+.draft-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-save-draft {
+    padding: 8px 20px;
+    background: var(--brand-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-save-draft:hover {
+    background: var(--brand-primary-dark);
+    box-shadow: 0 2px 8px rgba(250, 70, 22, 0.3);
+}
+
+/* ============================================================
+   Empty State
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 24px;
+    grid-column: 1 / -1;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .app-header    { padding: 20px; }
+    .app-title     { font-size: 22px; }
+    .main-content  { padding: 20px; }
+    .services-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    .field-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .date-input-wrapper { max-width: 100%; }
+}

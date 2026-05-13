@@ -1,0 +1,291 @@
+/* ============================================================
+   Validation Report Display — UiPath Apps custom HTML component
+
+   Theme tokens (--brand-primary, --brand-secondary, etc.) below
+   are intentionally generic. Defaults ship with UiPath orange
+   and a complementary navy; override in :root for an engagement.
+   ============================================================ */
+
+:root {
+    --brand-primary:        #FA4616;            /* UiPath orange (default) */
+    --brand-primary-dark:   #D63A11;
+    --brand-primary-pale:   rgba(250, 70, 22, 0.08);
+    --brand-secondary:      #2D2F5F;            /* Complementary navy */
+    --brand-secondary-light:#3D4080;
+    --bg-page:              #f0f2f5;
+    --bg-card:              #ffffff;
+    --border:               #dde1e7;
+    --text-primary:         #1a1a1a;
+    --text-secondary:       #5a5a5a;
+    --text-muted:           #8a8a8a;
+    --radius-card:          10px;
+    --radius-sm:            5px;
+    --shadow-card:          0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-hover:         0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.app-header {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+
+.app-title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+}
+
+.app-subtitle {
+    color: rgba(255,255,255,0.88);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* ============================================================
+   Main Layout
+   ============================================================ */
+.main-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 32px 32px;
+}
+
+/* ============================================================
+   Empty / Loading State
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 24px;
+}
+
+/* ============================================================
+   Report Container — the rendered markdown lives here
+   ============================================================ */
+.report-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 22px 28px;
+    box-shadow: var(--shadow-card);
+}
+
+/* ============================================================
+   Section Headings (## h2)
+   ============================================================ */
+.report-container h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brand-secondary);
+    border-bottom: 2px solid var(--brand-primary);
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.report-container h2:first-child {
+    margin-top: 0;
+}
+
+/* ============================================================
+   Sub-section Headings (### h3)
+   ============================================================ */
+.report-container h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 14px;
+    margin-bottom: 6px;
+    padding-left: 10px;
+    border-left: 3px solid var(--brand-primary);
+}
+
+/* ============================================================
+   Paragraphs
+   ============================================================ */
+.report-container p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+/* ============================================================
+   Bold text
+   ============================================================ */
+.report-container strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   Lists (ul / li)
+   ============================================================ */
+.report-container ul {
+    list-style: none;
+    margin-bottom: 8px;
+    padding-left: 0;
+}
+
+.report-container ul li {
+    position: relative;
+    padding: 5px 10px 5px 20px;
+    margin-bottom: 3px;
+    background: var(--brand-primary-pale);
+    border-radius: var(--radius-sm);
+    line-height: 1.45;
+    font-size: 12px;
+}
+
+.report-container ul li::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+}
+
+/* ============================================================
+   Blockquotes
+   ============================================================ */
+.report-container blockquote {
+    background: rgba(45, 47, 95, 0.05);
+    border-left: 3px solid var(--brand-secondary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 8px 12px;
+    margin: 6px 0;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.report-container blockquote p {
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.report-container .table-wrapper {
+    overflow-x: auto;
+    margin: 10px 0;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.report-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.report-container thead th {
+    background: var(--brand-secondary);
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 7px 10px;
+    white-space: nowrap;
+}
+
+.report-container tbody td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.report-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.report-container tbody tr:nth-child(even) {
+    background: var(--brand-primary-pale);
+}
+
+.report-container tbody tr:hover {
+    background: rgba(45, 47, 95, 0.06);
+}
+
+/* ============================================================
+   Horizontal Rules
+   ============================================================ */
+.report-container hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+}
+
+/* ============================================================
+   Inline Code & Code Blocks
+   ============================================================ */
+.report-container code {
+    background: rgba(45, 47, 95, 0.08);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.report-container pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    margin: 12px 0;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.report-container pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+    .app-header   { padding: 20px; }
+    .app-title    { font-size: 22px; }
+    .main-content { padding: 20px; }
+
+    .report-container {
+        padding: 20px;
+    }
+
+    .report-container h2 { font-size: 18px; }
+    .report-container h3 { font-size: 15px; }
+}

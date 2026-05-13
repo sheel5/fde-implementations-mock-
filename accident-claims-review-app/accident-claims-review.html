@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accident Claims Review</title>
+    <link rel="stylesheet" href="accident-claims-review.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1 class="app-title">Accident Claims Review</h1>
+            <p class="app-subtitle">Medical Services Verification</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="toolbar">
+            <button id="addServiceBtn" class="btn-add-service" title="Add a missing service">+ Add Service</button>
+        </div>
+
+        <div id="servicesContainer" class="services-grid">
+            <!-- Service cards will be dynamically rendered here -->
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="empty-state">
+            <p>Loading Data</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <p>No Services Found</p>
+        </div>
+    </main>
+
+    <script src="accident-claims-review.js"></script>
+</body>
+</html>
